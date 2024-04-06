@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw1etcd30alaq"]
+
+[ext_resource type="Script" path="res://mob.gd" id="1_jbrff"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dkqkl"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nljof"]
+radius = 0.4
+
+[node name="Mob" type="CharacterBody3D" groups=["mob"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_jbrff")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("SphereMesh_dkqkl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nljof")
