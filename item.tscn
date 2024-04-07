@@ -1,5 +1,20 @@
-[gd_scene format=3 uid="uid://bea0tjhi8blnb"]
+[gd_scene load_steps=3 format=3 uid="uid://bea0tjhi8blnb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y5qyp"]
+radius = 0.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_5wg32"]
+radius = 0.3
+height = 0.6
 
 [node name="Item" type="Node"]
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_y5qyp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_5wg32")

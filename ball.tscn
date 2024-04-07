@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c85hxl6tetoht"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_22fpf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bh6nj"]
+rough = true
+bounce = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q13m6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry4yl"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mqcdw"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_ry4yl")
+uv2_padding = 0.0
+
+[sub_resource type="Skin" id="Skin_fnj5p"]
+
+[node name="Ball" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_bh6nj")
+angular_damp = 1.0
+script = ExtResource("1_22fpf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_q13m6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_mqcdw")
+skin = SubResource("Skin_fnj5p")
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="FloorCheck" type="RayCast3D" parent="."]
+target_position = Vector3(0, -30, 0)

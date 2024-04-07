@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh1eqasertj8p"]
+[gd_scene load_steps=6 format=3 uid="uid://dh1eqasertj8p"]
 
 [ext_resource type="PackedScene" uid="uid://dytkjs1swqfh2" path="res://player.tscn" id="1_61ql1"]
-[ext_resource type="PackedScene" uid="uid://bw1etcd30alaq" path="res://mob.tscn" id="2_baic5"]
+[ext_resource type="PackedScene" uid="uid://bea0tjhi8blnb" path="res://item.tscn" id="3_82pop"]
+[ext_resource type="PackedScene" uid="uid://c85hxl6tetoht" path="res://ball.tscn" id="3_vwmyy"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tx22d"]
 height = 0.2
-radius = 5.0
+radius = 25.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xq24h"]
-top_radius = 5.0
-bottom_radius = 5.0
+top_radius = 25.0
+bottom_radius = 25.0
 height = 0.2
 
 [node name="Main" type="Node"]
@@ -29,8 +30,8 @@ mesh = SubResource("CylinderMesh_xq24h")
 transform = Transform3D(1, 0, 0, 0, -0.073743, 0.997277, 0, -0.997277, -0.073743, 0, 1.33373, 0)
 shadow_enabled = true
 
+[node name="Item" parent="." instance=ExtResource("3_82pop")]
+
+[node name="Ball" parent="." instance=ExtResource("3_vwmyy")]
+
 [node name="Player" parent="." instance=ExtResource("1_61ql1")]
-
-[node name="Mob" parent="." instance=ExtResource("2_baic5")]
-
-[node name="Mob2" parent="." instance=ExtResource("2_baic5")]
